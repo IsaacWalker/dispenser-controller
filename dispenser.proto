@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+// Service for interacting with the Dispenser
+service Dispenser
+{
+    // Prints the medication
+    rpc PrintMedication(PrintMedicationRequest) returns (PrintMedicationResponse){}
+}
+
+// Request for printing medication
+message PrintMedicationRequest 
+{
+    string first_name = 1;
+    
+    string last_name = 2;
+
+    string drug_name = 3;
+
+    float dosage = 4;
+}
+
+// Response for printing medication
+message PrintMedicationResponse
+{
+     int32 expected_duration = 1;
+}
