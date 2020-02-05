@@ -1,3 +1,7 @@
+# Test Client 
+# (1) Start server with "python printer_server.py"
+# (2) Start this client "python test_printer_client.py"
+
 import grpc
 
 # import the generated classes
@@ -12,11 +16,7 @@ stub = dispenser_pb2_grpc.DispenserStub(channel)
 
 # create a valid request message
 req = dispenser_pb2.PrintMedicationRequest()
-req.first_name = 'Ben'
-req.last_name = 'Dover'
+req.dosage = 1.25
 
-# make the call
 response = stub.PrintMedication(req)
-
-# et voilà
 print(response.expected_duration)
