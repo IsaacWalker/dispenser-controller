@@ -20,10 +20,32 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=_b('\252\002\021Web.PrinterClient'),
-  serialized_pb=_b('\n\rprinter.proto\"b\n\x16PrintMedicationRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tdrug_name\x18\x03 \x01(\t\x12\x0e\n\x06\x64osage\x18\x04 \x01(\x02\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\x32Q\n\x07Printer\x12\x46\n\x0fPrintMedication\x12\x17.PrintMedicationRequest\x1a\x18.PrintMedicationResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
+  serialized_pb=_b('\n\rprinter.proto\"b\n\x16PrintMedicationRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tdrug_name\x18\x03 \x01(\t\x12\x0e\n\x06\x64osage\x18\x04 \x01(\x02\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\"\x1b\n\x19\x43heckPrinterHealthRequest\"\x90\x01\n\x1a\x43heckPrinterHealthResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32-.CheckPrinterHealthResponse.HealthCheckStatus\"3\n\x11HealthCheckStatus\x12\x0b\n\x07HEALTHY\x10\x00\x12\x11\n\rNO_CONNECTION\x10\x01\x32\x9b\x01\n\x07Printer\x12\x46\n\x0fPrintMedication\x12\x17.PrintMedicationRequest\x1a\x18.PrintMedicationResponse\"\x00\x12H\n\x0b\x43heckHealth\x12\x1a.CheckPrinterHealthRequest\x1a\x1b.CheckPrinterHealthResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
 )
 
 
+
+_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS = _descriptor.EnumDescriptor(
+  name='HealthCheckStatus',
+  full_name='CheckPrinterHealthResponse.HealthCheckStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='HEALTHY', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_CONNECTION', index=1, number=1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=294,
+  serialized_end=345,
+)
+_sym_db.RegisterEnumDescriptor(_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS)
 
 
 _PRINTMEDICATIONREQUEST = _descriptor.Descriptor(
@@ -108,8 +130,68 @@ _PRINTMEDICATIONRESPONSE = _descriptor.Descriptor(
   serialized_end=169,
 )
 
+
+_CHECKPRINTERHEALTHREQUEST = _descriptor.Descriptor(
+  name='CheckPrinterHealthRequest',
+  full_name='CheckPrinterHealthRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=171,
+  serialized_end=198,
+)
+
+
+_CHECKPRINTERHEALTHRESPONSE = _descriptor.Descriptor(
+  name='CheckPrinterHealthResponse',
+  full_name='CheckPrinterHealthResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='CheckPrinterHealthResponse.status', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=201,
+  serialized_end=345,
+)
+
+_CHECKPRINTERHEALTHRESPONSE.fields_by_name['status'].enum_type = _CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS
+_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS.containing_type = _CHECKPRINTERHEALTHRESPONSE
 DESCRIPTOR.message_types_by_name['PrintMedicationRequest'] = _PRINTMEDICATIONREQUEST
 DESCRIPTOR.message_types_by_name['PrintMedicationResponse'] = _PRINTMEDICATIONRESPONSE
+DESCRIPTOR.message_types_by_name['CheckPrinterHealthRequest'] = _CHECKPRINTERHEALTHREQUEST
+DESCRIPTOR.message_types_by_name['CheckPrinterHealthResponse'] = _CHECKPRINTERHEALTHRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PrintMedicationRequest = _reflection.GeneratedProtocolMessageType('PrintMedicationRequest', (_message.Message,), {
@@ -126,6 +208,20 @@ PrintMedicationResponse = _reflection.GeneratedProtocolMessageType('PrintMedicat
   })
 _sym_db.RegisterMessage(PrintMedicationResponse)
 
+CheckPrinterHealthRequest = _reflection.GeneratedProtocolMessageType('CheckPrinterHealthRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CHECKPRINTERHEALTHREQUEST,
+  '__module__' : 'printer_pb2'
+  # @@protoc_insertion_point(class_scope:CheckPrinterHealthRequest)
+  })
+_sym_db.RegisterMessage(CheckPrinterHealthRequest)
+
+CheckPrinterHealthResponse = _reflection.GeneratedProtocolMessageType('CheckPrinterHealthResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CHECKPRINTERHEALTHRESPONSE,
+  '__module__' : 'printer_pb2'
+  # @@protoc_insertion_point(class_scope:CheckPrinterHealthResponse)
+  })
+_sym_db.RegisterMessage(CheckPrinterHealthResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -135,8 +231,8 @@ _PRINTER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=171,
-  serialized_end=252,
+  serialized_start=348,
+  serialized_end=503,
   methods=[
   _descriptor.MethodDescriptor(
     name='PrintMedication',
@@ -145,6 +241,15 @@ _PRINTER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_PRINTMEDICATIONREQUEST,
     output_type=_PRINTMEDICATIONRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CheckHealth',
+    full_name='Printer.CheckHealth',
+    index=1,
+    containing_service=None,
+    input_type=_CHECKPRINTERHEALTHREQUEST,
+    output_type=_CHECKPRINTERHEALTHRESPONSE,
     serialized_options=None,
   ),
 ])

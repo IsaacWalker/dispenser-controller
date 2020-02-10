@@ -7,6 +7,9 @@ service Printer
 {
     // Prints the medication
     rpc PrintMedication(PrintMedicationRequest) returns (PrintMedicationResponse){}
+
+    // Checks the printer health
+    rpc CheckHealth(CheckPrinterHealthRequest) returns (CheckPrinterHealthResponse){}
 }
 
 // Request for printing medication
@@ -25,4 +28,21 @@ message PrintMedicationRequest
 message PrintMedicationResponse
 {
      int32 expected_duration = 1;
+}
+
+message CheckPrinterHealthRequest
+{
+    
+}
+
+message CheckPrinterHealthResponse
+{
+    enum HealthCheckStatus
+    {
+    // TODO - Add More e.g. NO_MATERIAL etc
+        HEALTHY = 0;
+        NO_CONNECTION = 1;
+    }
+
+    HealthCheckStatus status = 1;
 }

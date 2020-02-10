@@ -16,6 +16,12 @@ class printerServicer(printer_pb2_grpc.PrinterServicer):
         response.expected_duration = 200
         return response
 
+    def CheckHealth(self, request, context):
+        response = printer_pb2.CheckPrinterHealthResponse()
+        printer_processor.check_health(request)
+        response.status = printer_pb2.CheckPrinterHealthResponse.HealthCheckStatus.HEALTHY #Healthy
+        return response
+
 
 # create a gRPC server
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

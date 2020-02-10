@@ -19,6 +19,11 @@ class PrinterStub(object):
         request_serializer=printer__pb2.PrintMedicationRequest.SerializeToString,
         response_deserializer=printer__pb2.PrintMedicationResponse.FromString,
         )
+    self.CheckHealth = channel.unary_unary(
+        '/Printer/CheckHealth',
+        request_serializer=printer__pb2.CheckPrinterHealthRequest.SerializeToString,
+        response_deserializer=printer__pb2.CheckPrinterHealthResponse.FromString,
+        )
 
 
 class PrinterServicer(object):
@@ -32,6 +37,13 @@ class PrinterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def CheckHealth(self, request, context):
+    """Checks the printer health
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PrinterServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +51,11 @@ def add_PrinterServicer_to_server(servicer, server):
           servicer.PrintMedication,
           request_deserializer=printer__pb2.PrintMedicationRequest.FromString,
           response_serializer=printer__pb2.PrintMedicationResponse.SerializeToString,
+      ),
+      'CheckHealth': grpc.unary_unary_rpc_method_handler(
+          servicer.CheckHealth,
+          request_deserializer=printer__pb2.CheckPrinterHealthRequest.FromString,
+          response_serializer=printer__pb2.CheckPrinterHealthResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
