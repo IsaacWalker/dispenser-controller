@@ -22,7 +22,7 @@ union(){
     rotate(a=[90, 0, 0]){
         translate(v=[0, 0, -35]){
             color("White"){
-                cylinder(h=25, r=10, r1=10);
+                cylinder(h=25, r=10);
             };
         };
     };
