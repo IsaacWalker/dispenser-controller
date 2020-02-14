@@ -1,5 +1,8 @@
 import openpyscad as op
 
+from os import listdir
+from subprocess import call
+
 # Dummy definition of ODF - MAY CHANGE
 class ODF:
     def __init__(self, dosage, label, api, material, shape):
@@ -44,3 +47,11 @@ def generate_odf_scad(unique_file_name, odf):
 
 odf = ODF(1.25, 'Label', 'api', 'material', 'cylinder')
 generate_odf_scad('test.scad', odf)
+
+files = listdir(".")
+
+for file in files:
+    if file.find(".scad") >= 0:
+        of = file.replace(".scad", ".stl")
+        cmd = 'call (["openscad",  "-o", "{}",  "{}"])'.format(of, file)   #create openscad command        
+        exec(cmd)
