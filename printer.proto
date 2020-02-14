@@ -11,6 +11,8 @@ service Printer
     rpc CreatePrintJob(CreatePrintJobRequest) returns (CreatePrintjobResponse){}
 
     rpc RunPrintJob(RunPrintJobRequest) returns (RunPrintJobResponse){}
+
+    rpc GetJobStatus(GetJobStatusRequest) returns (GetJobStatusResponse){}
 }
 
 
@@ -35,6 +37,7 @@ message CheckPrinterHealthResponse
         NO_CONNECTION = 1;
     }
 
+
     HealthCheckStatus status = 1;
 }
 
@@ -42,9 +45,12 @@ message CreatePrintJobRequest
 {
     string first_name = 1;
     
+
     string last_name = 2;
 
+
     string drug_name = 3;
+
 
     float dosage = 4;
 }
@@ -52,6 +58,8 @@ message CreatePrintJobRequest
 message CreatePrintjobResponse
 {
      int32 job_id = 1;
+
+
      int32 expected_duration = 2;
 }
 
@@ -63,5 +71,29 @@ message RunPrintJobRequest
 message RunPrintJobResponse
 {
     bool success = 1;
+
+
     string error_code = 2;
+}
+
+message GetJobStatusRequest
+{
+     int32 job_id = 1;
+}
+
+message GetJobStatusResponse
+{
+    enum JobStatus
+    {
+        RUNNING = 0;
+        PAUSED = 1;
+        NOT_STARTED = 2;
+        FINISHED = 3;
+	}
+
+
+    JobStatus status = 1;
+
+
+    int32 remaining_time = 2;
 }

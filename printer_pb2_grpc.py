@@ -29,6 +29,11 @@ class PrinterStub(object):
         request_serializer=printer__pb2.RunPrintJobRequest.SerializeToString,
         response_deserializer=printer__pb2.RunPrintJobResponse.FromString,
         )
+    self.GetJobStatus = channel.unary_unary(
+        '/Printer/GetJobStatus',
+        request_serializer=printer__pb2.GetJobStatusRequest.SerializeToString,
+        response_deserializer=printer__pb2.GetJobStatusResponse.FromString,
+        )
 
 
 class PrinterServicer(object):
@@ -56,6 +61,13 @@ class PrinterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetJobStatus(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PrinterServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -73,6 +85,11 @@ def add_PrinterServicer_to_server(servicer, server):
           servicer.RunPrintJob,
           request_deserializer=printer__pb2.RunPrintJobRequest.FromString,
           response_serializer=printer__pb2.RunPrintJobResponse.SerializeToString,
+      ),
+      'GetJobStatus': grpc.unary_unary_rpc_method_handler(
+          servicer.GetJobStatus,
+          request_deserializer=printer__pb2.GetJobStatusRequest.FromString,
+          response_serializer=printer__pb2.GetJobStatusResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -10,13 +10,23 @@ import printer_pb2_grpc
 import printer_processor
 
 class printerServicer(printer_pb2_grpc.PrinterServicer):
-    def PrintMedication(self, request, context):
-        response = printer_pb2.PrintMedicationResponse()
-        printer_processor.print_medication(request)
-        response.expected_duration = 200
+    def CreatePrintJob(self, request, context):
+        # TODO
+        response = printer_pb2.CreatePrintjobResponse()
+        return response
+    
+    def RunPrintJob(self, request, context):
+        # TODO
+        response = printer_pb2.RunPrintJobResponse()
+        return response
+
+    def GetJobStatus(self, request, context):
+        # TODO
+        response = printer_pb2.GetJobStatusResponse()
         return response
 
     def CheckHealth(self, request, context):
+        # TODO
         response = printer_pb2.CheckPrinterHealthResponse()
         printer_processor.check_health(request)
         response.status = printer_pb2.CheckPrinterHealthResponse.HealthCheckStatus.HEALTHY #Healthy
