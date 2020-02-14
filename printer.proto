@@ -5,24 +5,15 @@ option csharp_namespace = "Web.PrinterClient";
 // Service for interacting with the Dispenser
 service Printer
 {
-    // Prints the medication
-    rpc PrintMedication(PrintMedicationRequest) returns (PrintMedicationResponse){}
-
     // Checks the printer health
     rpc CheckHealth(CheckPrinterHealthRequest) returns (CheckPrinterHealthResponse){}
+
+    rpc CreatePrintJob(CreatePrintJobRequest) returns (CreatePrintjobResponse){}
+
+    rpc RunPrintJob(RunPrintJobRequest) returns (RunPrintJobResponse){}
 }
 
-// Request for printing medication
-message PrintMedicationRequest 
-{
-    string first_name = 1;
-    
-    string last_name = 2;
 
-    string drug_name = 3;
-
-    float dosage = 4;
-}
 
 // Response for printing medication
 message PrintMedicationResponse
@@ -45,4 +36,32 @@ message CheckPrinterHealthResponse
     }
 
     HealthCheckStatus status = 1;
+}
+
+message CreatePrintJobRequest
+{
+    string first_name = 1;
+    
+    string last_name = 2;
+
+    string drug_name = 3;
+
+    float dosage = 4;
+}
+
+message CreatePrintjobResponse
+{
+     int32 job_id = 1;
+     int32 expected_duration = 2;
+}
+
+message RunPrintJobRequest
+{
+     int32 job_id = 1;
+}
+
+message RunPrintJobResponse
+{
+    bool success = 1;
+    string error_code = 2;
 }
