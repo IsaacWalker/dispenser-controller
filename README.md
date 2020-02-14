@@ -5,9 +5,9 @@ Controller for a RPi gRPC server
 
 1. Install dependencies
 ``
-pip install grpcio
-pip install grpcio-tools
-pip install openpyscad
+    * pip install grpcio
+    * pip install grpcio-tools
+    * pip install openpyscad
 ``
 
 2. Install OpenScad
