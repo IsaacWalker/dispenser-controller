@@ -14,28 +14,26 @@ class PrinterStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.PrintMedication = channel.unary_unary(
-        '/Printer/PrintMedication',
-        request_serializer=printer__pb2.PrintMedicationRequest.SerializeToString,
-        response_deserializer=printer__pb2.PrintMedicationResponse.FromString,
-        )
     self.CheckHealth = channel.unary_unary(
         '/Printer/CheckHealth',
         request_serializer=printer__pb2.CheckPrinterHealthRequest.SerializeToString,
         response_deserializer=printer__pb2.CheckPrinterHealthResponse.FromString,
+        )
+    self.CreatePrintJob = channel.unary_unary(
+        '/Printer/CreatePrintJob',
+        request_serializer=printer__pb2.CreatePrintJobRequest.SerializeToString,
+        response_deserializer=printer__pb2.CreatePrintjobResponse.FromString,
+        )
+    self.RunPrintJob = channel.unary_unary(
+        '/Printer/RunPrintJob',
+        request_serializer=printer__pb2.RunPrintJobRequest.SerializeToString,
+        response_deserializer=printer__pb2.RunPrintJobResponse.FromString,
         )
 
 
 class PrinterServicer(object):
   """Service for interacting with the Dispenser
   """
-
-  def PrintMedication(self, request, context):
-    """Prints the medication
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
 
   def CheckHealth(self, request, context):
     """Checks the printer health
@@ -44,18 +42,37 @@ class PrinterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def CreatePrintJob(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def RunPrintJob(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PrinterServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'PrintMedication': grpc.unary_unary_rpc_method_handler(
-          servicer.PrintMedication,
-          request_deserializer=printer__pb2.PrintMedicationRequest.FromString,
-          response_serializer=printer__pb2.PrintMedicationResponse.SerializeToString,
-      ),
       'CheckHealth': grpc.unary_unary_rpc_method_handler(
           servicer.CheckHealth,
           request_deserializer=printer__pb2.CheckPrinterHealthRequest.FromString,
           response_serializer=printer__pb2.CheckPrinterHealthResponse.SerializeToString,
+      ),
+      'CreatePrintJob': grpc.unary_unary_rpc_method_handler(
+          servicer.CreatePrintJob,
+          request_deserializer=printer__pb2.CreatePrintJobRequest.FromString,
+          response_serializer=printer__pb2.CreatePrintjobResponse.SerializeToString,
+      ),
+      'RunPrintJob': grpc.unary_unary_rpc_method_handler(
+          servicer.RunPrintJob,
+          request_deserializer=printer__pb2.RunPrintJobRequest.FromString,
+          response_serializer=printer__pb2.RunPrintJobResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
