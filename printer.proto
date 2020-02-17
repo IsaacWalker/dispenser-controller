@@ -41,19 +41,31 @@ message CheckPrinterHealthResponse
     HealthCheckStatus status = 1;
 }
 
+message ODF
+{
+    string label = 1;
+
+
+    string drug_name = 2;
+
+
+    float density = 3;
+
+
+    float height = 4;
+
+
+    float width = 5;
+
+
+    float length = 6;
+}
+
 message CreatePrintJobRequest
 {
-    string first_name = 1;
-    
-
-    string last_name = 2;
-
-
-    string drug_name = 3;
-
-
-    float dosage = 4;
+    ODF odf = 1;
 }
+
 
 message CreatePrintjobResponse
 {

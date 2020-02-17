@@ -1,29 +1,12 @@
 union(){
-    difference(){
-        color("Green"){
-            translate(v=[0, 35, 0]){
-                sphere(r=10);
-            };
-        };
-        translate(v=[-10, 10, -10]){
-            cube(size=[20, 25, 20]);
-        };
-    };
-    difference(){
-        color("Green"){
-            translate(v=[0, 10, 0]){
-                sphere(r=10);
-            };
-        };
-        translate(v=[-10, 10, -10]){
-            cube(size=[20, 25, 20]);
-        };
-    };
-    rotate(a=[90, 0, 0]){
-        translate(v=[0, 0, -35]){
-            color("White"){
-                cylinder(h=25, r=10);
+    color("Red"){
+        rotate(a=[0, 0, 90]){
+            translate(v=[5, -14, 1.6]){
+                linear_extrude(height=0.1){
+                    text(text="Label", size=6);
+                };
             };
         };
     };
+    cube(size=[25.0, 30.0, 1.5]);
 };
