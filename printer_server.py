@@ -27,8 +27,8 @@ class printerServicer(printer_pb2_grpc.PrinterServicer):
 
     def CheckHealth(self, request, context):
         # TODO
+        print('Checking Health...')
         response = printer_pb2.CheckPrinterHealthResponse()
-        printer_processor.check_health(request)
         response.status = printer_pb2.CheckPrinterHealthResponse.HealthCheckStatus.HEALTHY #Healthy
         return response
 

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=_b('\252\002\021Web.PrinterClient'),
-  serialized_pb=_b('\n\rprinter.proto\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\"\x1b\n\x19\x43heckPrinterHealthRequest\"\x90\x01\n\x1a\x43heckPrinterHealthResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32-.CheckPrinterHealthResponse.HealthCheckStatus\"3\n\x11HealthCheckStatus\x12\x0b\n\x07HEALTHY\x10\x00\x12\x11\n\rNO_CONNECTION\x10\x01\"g\n\x03ODF\x12\r\n\x05label\x18\x01 \x01(\t\x12\x11\n\tdrug_name\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65nsity\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\x12\r\n\x05width\x18\x05 \x01(\x02\x12\x0e\n\x06length\x18\x06 \x01(\x02\"*\n\x15\x43reatePrintJobRequest\x12\x11\n\x03odf\x18\x01 \x01(\x0b\x32\x04.ODF\"C\n\x16\x43reatePrintjobResponse\x12\x0e\n\x06job_id\x18\x01 \x01(\x05\x12\x19\n\x11\x65xpected_duration\x18\x02 \x01(\x05\"$\n\x12RunPrintJobRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\x05\":\n\x13RunPrintJobResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nerror_code\x18\x02 \x01(\t\"%\n\x13GetJobStatusRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\x05\"\xa4\x01\n\x14GetJobStatusResponse\x12/\n\x06status\x18\x01 \x01(\x0e\x32\x1f.GetJobStatusResponse.JobStatus\x12\x16\n\x0eremaining_time\x18\x02 \x01(\x05\"C\n\tJobStatus\x12\x0b\n\x07RUNNING\x10\x00\x12\n\n\x06PAUSED\x10\x01\x12\x0f\n\x0bNOT_STARTED\x10\x02\x12\x0c\n\x08\x46INISHED\x10\x03\x32\x93\x02\n\x07Printer\x12H\n\x0b\x43heckHealth\x12\x1a.CheckPrinterHealthRequest\x1a\x1b.CheckPrinterHealthResponse\"\x00\x12\x43\n\x0e\x43reatePrintJob\x12\x16.CreatePrintJobRequest\x1a\x17.CreatePrintjobResponse\"\x00\x12:\n\x0bRunPrintJob\x12\x13.RunPrintJobRequest\x1a\x14.RunPrintJobResponse\"\x00\x12=\n\x0cGetJobStatus\x12\x14.GetJobStatusRequest\x1a\x15.GetJobStatusResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
+  serialized_pb=_b('\n\rprinter.proto\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\"\x1b\n\x19\x43heckPrinterHealthRequest\"\x90\x01\n\x1a\x43heckPrinterHealthResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32-.CheckPrinterHealthResponse.HealthCheckStatus\"3\n\x11HealthCheckStatus\x12\x0b\n\x07HEALTHY\x10\x00\x12\x11\n\rNO_CONNECTION\x10\x01\"g\n\x03ODF\x12\r\n\x05label\x18\x01 \x01(\t\x12\x11\n\tdrug_name\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65nsity\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\x12\r\n\x05width\x18\x05 \x01(\x02\x12\x0e\n\x06length\x18\x06 \x01(\x02\"*\n\x15\x43reatePrintJobRequest\x12\x11\n\x03odf\x18\x01 \x01(\x0b\x32\x04.ODF\"C\n\x16\x43reatePrintjobResponse\x12\x0e\n\x06job_id\x18\x01 \x01(\t\x12\x19\n\x11\x65xpected_duration\x18\x02 \x01(\x05\"$\n\x12RunPrintJobRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\":\n\x13RunPrintJobResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nerror_code\x18\x02 \x01(\t\"%\n\x13GetJobStatusRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\"\xa4\x01\n\x14GetJobStatusResponse\x12/\n\x06status\x18\x01 \x01(\x0e\x32\x1f.GetJobStatusResponse.JobStatus\x12\x16\n\x0eremaining_time\x18\x02 \x01(\x05\"C\n\tJobStatus\x12\x0b\n\x07RUNNING\x10\x00\x12\n\n\x06PAUSED\x10\x01\x12\x0f\n\x0bNOT_STARTED\x10\x02\x12\x0c\n\x08\x46INISHED\x10\x03\x32\x93\x02\n\x07Printer\x12H\n\x0b\x43heckHealth\x12\x1a.CheckPrinterHealthRequest\x1a\x1b.CheckPrinterHealthResponse\"\x00\x12\x43\n\x0e\x43reatePrintJob\x12\x16.CreatePrintJobRequest\x1a\x17.CreatePrintjobResponse\"\x00\x12:\n\x0bRunPrintJob\x12\x13.RunPrintJobRequest\x1a\x14.RunPrintJobResponse\"\x00\x12=\n\x0cGetJobStatus\x12\x14.GetJobStatusRequest\x1a\x15.GetJobStatusResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
 )
 
 
@@ -271,8 +271,8 @@ _CREATEPRINTJOBRESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='job_id', full_name='CreatePrintjobResponse.job_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -309,8 +309,8 @@ _RUNPRINTJOBREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='job_id', full_name='RunPrintJobRequest.job_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -378,8 +378,8 @@ _GETJOBSTATUSREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='job_id', full_name='GetJobStatusRequest.job_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
