@@ -11,18 +11,19 @@ import printer_processor
 
 class printerServicer(printer_pb2_grpc.PrinterServicer):
     def CreatePrintJob(self, request, context):
-        # TODO
         response = printer_pb2.CreatePrintjobResponse()
+        job = printer_processor.create_print_job(request)
+        response.job_id = job.id
+        response.expected_duration = job.expected_duration
         return response
     
     def RunPrintJob(self, request, context):
-        # TODO
         response = printer_pb2.RunPrintJobResponse()
+        printer_processor.run_print_job(request)
         return response
 
     def GetJobStatus(self, request, context):
-        # TODO
-        response = printer_pb2.GetJobStatusResponse()
+        response = printer_processor.get_job_status(request)
         return response
 
     def CheckHealth(self, request, context):
