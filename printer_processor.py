@@ -1,7 +1,7 @@
 import uuid 
 import printer_pb2
 import datetime
-
+import odf
 
 # Job Id (UUID) => job
 job_dict = dict()
@@ -19,6 +19,7 @@ def create_print_job(request):
     print('Creating print job ' + request.odf.label)
     
     #TODO Create job and estimate duration
+    
     job = printJob(1000 * 60 * 30)
     job_dict[job.id] = job
 
