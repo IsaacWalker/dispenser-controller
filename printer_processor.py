@@ -2,6 +2,7 @@ import uuid
 import printer_pb2
 import datetime
 import odf
+import os
 
 # Job Id (UUID) => job
 job_dict = dict()
@@ -19,11 +20,21 @@ def create_print_job(request):
     print('Creating print job ' + request.odf.label)
     
     #TODO Create job and estimate duration
-    
-    job = printJob(1000 * 60 * 30)
+    job = printJob(0)
+    scad_filename = str(job.id) + '.scad'
+    stl_filename = str(job.id) + '.stl'
+
+    print ("Generating SCAD")
+    odf.generate_odf_scad(scad_filename,  request.odf)
+
+    print ("Generating STL from SCAD")
+    generate_stl = "openscad -o stls/" + stl_filename + " scads/" +  scad_filename
+    os.system(generate_stl)
+
     job_dict[job.id] = job
 
     print('Job created with id ' + job.id)
+
     # Returns the job
     return job
 
