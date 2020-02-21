@@ -1,10 +1,15 @@
+############################# Download Links for Prusa Slicer and OpenSCAD for Raspberry Pi ################################
+# Prusa Slicer: https://github.com/davidk/PrusaSlicer-ARM.AppImage/releases/download/2.1.1/PrusaSlicer-2.1.1-armhf.AppImage
+# OpenSCAD: https://files.openscad.org/snapshots/OpenSCAD-2019.01.13-armhf.AppImage 
+
 import openpyscad as op
 import printer_pb2
 import os
 import math
+import platform
 from subprocess import call
 
-profile_name = "prusai3mk3.ini"
+profile_name = "ender3.ini"
 dosage = 100
 length = math.sqrt(0.8 * dosage)
 
@@ -25,8 +30,11 @@ generate_stl = "openscad -o test.stl test.scad"
 os.system(generate_stl)
 
 print ("Generating GCODE from STL")
-generate_gcode = "prusa-slicer-console -g test.stl --load printer_profiles/" + profile_name + " -o gcode/test.gcode"
+generate_gcode = "prusa-slicer -g test.stl --load printer_profiles/" + profile_name + " -o gcode/test.gcode"
 os.system(generate_gcode)
 
-#print ("Cleaning Up")
-#os.system("del test.stl test.scad")
+print ("Cleaning Up")
+if(platform.system() == "Windows"):
+    os.system("del test.stl test.scad")
+else:
+    os.system("rm test.stl test.scad")
