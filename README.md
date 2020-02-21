@@ -16,7 +16,7 @@ Controller for a RPi gRPC server
         * https://files.openscad.org/snapshots/OpenSCAD-2019.01.13-armhf.AppImage (Raspberry Pi)
     * Prusa Slicer
         * https://github.com/prusa3d/PrusaSlicer/releases
-        * https://github.com/davidk/PrusaSlicer-ARM.AppImage/releases (Raspberry Pi)
+        * https://github.com/davidk/PrusaSlicer-ARM.AppImage/releases (Raspberry Pi Buster+)
 
 3. Add to Path
     * Add OpenScad exe location & Prusa Slicer exe location as environment variable (Windows)
