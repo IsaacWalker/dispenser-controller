@@ -14,11 +14,6 @@ class PrinterStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.CheckHealth = channel.unary_unary(
-        '/Printer/CheckHealth',
-        request_serializer=printer__pb2.CheckPrinterHealthRequest.SerializeToString,
-        response_deserializer=printer__pb2.CheckPrinterHealthResponse.FromString,
-        )
     self.CreatePrintJob = channel.unary_unary(
         '/Printer/CreatePrintJob',
         request_serializer=printer__pb2.CreatePrintJobRequest.SerializeToString,
@@ -34,18 +29,16 @@ class PrinterStub(object):
         request_serializer=printer__pb2.GetJobStatusRequest.SerializeToString,
         response_deserializer=printer__pb2.GetJobStatusResponse.FromString,
         )
+    self.GetPrinterStatus = channel.unary_unary(
+        '/Printer/GetPrinterStatus',
+        request_serializer=printer__pb2.GetPrinterStatusRequest.SerializeToString,
+        response_deserializer=printer__pb2.GetPrinterStatusResponse.FromString,
+        )
 
 
 class PrinterServicer(object):
   """Service for interacting with the Dispenser
   """
-
-  def CheckHealth(self, request, context):
-    """Checks the printer health
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
 
   def CreatePrintJob(self, request, context):
     # missing associated documentation comment in .proto file
@@ -68,14 +61,16 @@ class PrinterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetPrinterStatus(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PrinterServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'CheckHealth': grpc.unary_unary_rpc_method_handler(
-          servicer.CheckHealth,
-          request_deserializer=printer__pb2.CheckPrinterHealthRequest.FromString,
-          response_serializer=printer__pb2.CheckPrinterHealthResponse.SerializeToString,
-      ),
       'CreatePrintJob': grpc.unary_unary_rpc_method_handler(
           servicer.CreatePrintJob,
           request_deserializer=printer__pb2.CreatePrintJobRequest.FromString,
@@ -90,6 +85,11 @@ def add_PrinterServicer_to_server(servicer, server):
           servicer.GetJobStatus,
           request_deserializer=printer__pb2.GetJobStatusRequest.FromString,
           response_serializer=printer__pb2.GetJobStatusResponse.SerializeToString,
+      ),
+      'GetPrinterStatus': grpc.unary_unary_rpc_method_handler(
+          servicer.GetPrinterStatus,
+          request_deserializer=printer__pb2.GetPrinterStatusRequest.FromString,
+          response_serializer=printer__pb2.GetPrinterStatusResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

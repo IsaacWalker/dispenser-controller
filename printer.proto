@@ -5,14 +5,13 @@ option csharp_namespace = "Web.PrinterClient";
 // Service for interacting with the Dispenser
 service Printer
 {
-    // Checks the printer health
-    rpc CheckHealth(CheckPrinterHealthRequest) returns (CheckPrinterHealthResponse){}
-
     rpc CreatePrintJob(CreatePrintJobRequest) returns (CreatePrintjobResponse){}
 
     rpc RunPrintJob(RunPrintJobRequest) returns (RunPrintJobResponse){}
 
     rpc GetJobStatus(GetJobStatusRequest) returns (GetJobStatusResponse){}
+
+    rpc GetPrinterStatus(GetPrinterStatusRequest) returns (GetPrinterStatusResponse){}
 }
 
 
@@ -23,23 +22,6 @@ message PrintMedicationResponse
      int32 expected_duration = 1;
 }
 
-message CheckPrinterHealthRequest
-{
-    
-}
-
-message CheckPrinterHealthResponse
-{
-    enum HealthCheckStatus
-    {
-    // TODO - Add More e.g. NO_MATERIAL etc
-        HEALTHY = 0;
-        NO_CONNECTION = 1;
-    }
-
-
-    HealthCheckStatus status = 1;
-}
 
 message ODF
 {
@@ -63,7 +45,7 @@ message ODF
 
 message CreatePrintJobRequest
 {
-    ODF odf = 1;
+    repeated ODF odfs = 1;
 }
 
 
@@ -97,12 +79,29 @@ message GetJobStatusResponse
 {
     enum JobStatus
     {
-        RUNNING = 0;
-        PAUSED = 1;
-        NOT_STARTED = 2;
-        FINISHED = 3;
+        READY = 0;
+        PRINTING = 1;
+        FINISHED = 2;
+        REMOVED = 3;
 	}
 
 
     JobStatus status = 1;
+}
+
+message GetPrinterStatusRequest
+{
+
+}
+
+message GetPrinterStatusResponse
+{
+    enum PrinterStatus
+    {
+        IDLE = 0;
+        PRINTING = 1;
+        NO_CONNECTION = 2;
+	}
+
+    PrinterStatus status = 1;
 }

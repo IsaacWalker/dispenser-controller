@@ -20,32 +20,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=_b('\252\002\021Web.PrinterClient'),
-  serialized_pb=_b('\n\rprinter.proto\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\"\x1b\n\x19\x43heckPrinterHealthRequest\"\x90\x01\n\x1a\x43heckPrinterHealthResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32-.CheckPrinterHealthResponse.HealthCheckStatus\"3\n\x11HealthCheckStatus\x12\x0b\n\x07HEALTHY\x10\x00\x12\x11\n\rNO_CONNECTION\x10\x01\"g\n\x03ODF\x12\r\n\x05label\x18\x01 \x01(\t\x12\x11\n\tdrug_name\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65nsity\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\x12\r\n\x05width\x18\x05 \x01(\x02\x12\x0e\n\x06length\x18\x06 \x01(\x02\"*\n\x15\x43reatePrintJobRequest\x12\x11\n\x03odf\x18\x01 \x01(\x0b\x32\x04.ODF\"C\n\x16\x43reatePrintjobResponse\x12\x0e\n\x06job_id\x18\x01 \x01(\t\x12\x19\n\x11\x65xpected_duration\x18\x02 \x01(\x05\"$\n\x12RunPrintJobRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\":\n\x13RunPrintJobResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nerror_code\x18\x02 \x01(\t\"%\n\x13GetJobStatusRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\"\xa4\x01\n\x14GetJobStatusResponse\x12/\n\x06status\x18\x01 \x01(\x0e\x32\x1f.GetJobStatusResponse.JobStatus\x12\x16\n\x0eremaining_time\x18\x02 \x01(\x05\"C\n\tJobStatus\x12\x0b\n\x07RUNNING\x10\x00\x12\n\n\x06PAUSED\x10\x01\x12\x0f\n\x0bNOT_STARTED\x10\x02\x12\x0c\n\x08\x46INISHED\x10\x03\x32\x93\x02\n\x07Printer\x12H\n\x0b\x43heckHealth\x12\x1a.CheckPrinterHealthRequest\x1a\x1b.CheckPrinterHealthResponse\"\x00\x12\x43\n\x0e\x43reatePrintJob\x12\x16.CreatePrintJobRequest\x1a\x17.CreatePrintjobResponse\"\x00\x12:\n\x0bRunPrintJob\x12\x13.RunPrintJobRequest\x1a\x14.RunPrintJobResponse\"\x00\x12=\n\x0cGetJobStatus\x12\x14.GetJobStatusRequest\x1a\x15.GetJobStatusResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
+  serialized_pb=_b('\n\rprinter.proto\"4\n\x17PrintMedicationResponse\x12\x19\n\x11\x65xpected_duration\x18\x01 \x01(\x05\"g\n\x03ODF\x12\r\n\x05label\x18\x01 \x01(\t\x12\x11\n\tdrug_name\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65nsity\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\x12\r\n\x05width\x18\x05 \x01(\x02\x12\x0e\n\x06length\x18\x06 \x01(\x02\"+\n\x15\x43reatePrintJobRequest\x12\x12\n\x04odfs\x18\x01 \x03(\x0b\x32\x04.ODF\"C\n\x16\x43reatePrintjobResponse\x12\x0e\n\x06job_id\x18\x01 \x01(\t\x12\x19\n\x11\x65xpected_duration\x18\x02 \x01(\x05\"$\n\x12RunPrintJobRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\":\n\x13RunPrintJobResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nerror_code\x18\x02 \x01(\t\"%\n\x13GetJobStatusRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\"\x88\x01\n\x14GetJobStatusResponse\x12/\n\x06status\x18\x01 \x01(\x0e\x32\x1f.GetJobStatusResponse.JobStatus\"?\n\tJobStatus\x12\t\n\x05READY\x10\x00\x12\x0c\n\x08PRINTING\x10\x01\x12\x0c\n\x08\x46INISHED\x10\x02\x12\x0b\n\x07REMOVED\x10\x03\"\x19\n\x17GetPrinterStatusRequest\"\x8f\x01\n\x18GetPrinterStatusResponse\x12\x37\n\x06status\x18\x01 \x01(\x0e\x32\'.GetPrinterStatusResponse.PrinterStatus\":\n\rPrinterStatus\x12\x08\n\x04IDLE\x10\x00\x12\x0c\n\x08PRINTING\x10\x01\x12\x11\n\rNO_CONNECTION\x10\x02\x32\x94\x02\n\x07Printer\x12\x43\n\x0e\x43reatePrintJob\x12\x16.CreatePrintJobRequest\x1a\x17.CreatePrintjobResponse\"\x00\x12:\n\x0bRunPrintJob\x12\x13.RunPrintJobRequest\x1a\x14.RunPrintJobResponse\"\x00\x12=\n\x0cGetJobStatus\x12\x14.GetJobStatusRequest\x1a\x15.GetJobStatusResponse\"\x00\x12I\n\x10GetPrinterStatus\x12\x18.GetPrinterStatusRequest\x1a\x19.GetPrinterStatusResponse\"\x00\x42\x14\xaa\x02\x11Web.PrinterClientb\x06proto3')
 )
 
 
-
-_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS = _descriptor.EnumDescriptor(
-  name='HealthCheckStatus',
-  full_name='CheckPrinterHealthResponse.HealthCheckStatus',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='HEALTHY', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='NO_CONNECTION', index=1, number=1,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=194,
-  serialized_end=245,
-)
-_sym_db.RegisterEnumDescriptor(_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS)
 
 _GETJOBSTATUSRESPONSE_JOBSTATUS = _descriptor.EnumDescriptor(
   name='JobStatus',
@@ -54,28 +32,54 @@ _GETJOBSTATUSRESPONSE_JOBSTATUS = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='RUNNING', index=0, number=0,
+      name='READY', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PAUSED', index=1, number=1,
+      name='PRINTING', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NOT_STARTED', index=2, number=2,
+      name='FINISHED', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='FINISHED', index=3, number=3,
+      name='REMOVED', index=3, number=3,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=700,
-  serialized_end=767,
+  serialized_start=501,
+  serialized_end=564,
 )
 _sym_db.RegisterEnumDescriptor(_GETJOBSTATUSRESPONSE_JOBSTATUS)
+
+_GETPRINTERSTATUSRESPONSE_PRINTERSTATUS = _descriptor.EnumDescriptor(
+  name='PrinterStatus',
+  full_name='GetPrinterStatusResponse.PrinterStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='IDLE', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PRINTING', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_CONNECTION', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=679,
+  serialized_end=737,
+)
+_sym_db.RegisterEnumDescriptor(_GETPRINTERSTATUSRESPONSE_PRINTERSTATUS)
 
 
 _PRINTMEDICATIONRESPONSE = _descriptor.Descriptor(
@@ -106,62 +110,6 @@ _PRINTMEDICATIONRESPONSE = _descriptor.Descriptor(
   ],
   serialized_start=17,
   serialized_end=69,
-)
-
-
-_CHECKPRINTERHEALTHREQUEST = _descriptor.Descriptor(
-  name='CheckPrinterHealthRequest',
-  full_name='CheckPrinterHealthRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=71,
-  serialized_end=98,
-)
-
-
-_CHECKPRINTERHEALTHRESPONSE = _descriptor.Descriptor(
-  name='CheckPrinterHealthResponse',
-  full_name='CheckPrinterHealthResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='CheckPrinterHealthResponse.status', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=101,
-  serialized_end=245,
 )
 
 
@@ -226,8 +174,8 @@ _ODF = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=247,
-  serialized_end=350,
+  serialized_start=71,
+  serialized_end=174,
 )
 
 
@@ -239,9 +187,9 @@ _CREATEPRINTJOBREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='odf', full_name='CreatePrintJobRequest.odf', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='odfs', full_name='CreatePrintJobRequest.odfs', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -257,8 +205,8 @@ _CREATEPRINTJOBREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=352,
-  serialized_end=394,
+  serialized_start=176,
+  serialized_end=219,
 )
 
 
@@ -295,8 +243,8 @@ _CREATEPRINTJOBRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=396,
-  serialized_end=463,
+  serialized_start=221,
+  serialized_end=288,
 )
 
 
@@ -326,8 +274,8 @@ _RUNPRINTJOBREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=465,
-  serialized_end=501,
+  serialized_start=290,
+  serialized_end=326,
 )
 
 
@@ -364,8 +312,8 @@ _RUNPRINTJOBRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=503,
-  serialized_end=561,
+  serialized_start=328,
+  serialized_end=386,
 )
 
 
@@ -395,8 +343,8 @@ _GETJOBSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=563,
-  serialized_end=600,
+  serialized_start=388,
+  serialized_end=425,
 )
 
 
@@ -414,13 +362,6 @@ _GETJOBSTATUSRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='remaining_time', full_name='GetJobStatusResponse.remaining_time', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -434,18 +375,72 @@ _GETJOBSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=603,
-  serialized_end=767,
+  serialized_start=428,
+  serialized_end=564,
 )
 
-_CHECKPRINTERHEALTHRESPONSE.fields_by_name['status'].enum_type = _CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS
-_CHECKPRINTERHEALTHRESPONSE_HEALTHCHECKSTATUS.containing_type = _CHECKPRINTERHEALTHRESPONSE
-_CREATEPRINTJOBREQUEST.fields_by_name['odf'].message_type = _ODF
+
+_GETPRINTERSTATUSREQUEST = _descriptor.Descriptor(
+  name='GetPrinterStatusRequest',
+  full_name='GetPrinterStatusRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=566,
+  serialized_end=591,
+)
+
+
+_GETPRINTERSTATUSRESPONSE = _descriptor.Descriptor(
+  name='GetPrinterStatusResponse',
+  full_name='GetPrinterStatusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='GetPrinterStatusResponse.status', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _GETPRINTERSTATUSRESPONSE_PRINTERSTATUS,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=594,
+  serialized_end=737,
+)
+
+_CREATEPRINTJOBREQUEST.fields_by_name['odfs'].message_type = _ODF
 _GETJOBSTATUSRESPONSE.fields_by_name['status'].enum_type = _GETJOBSTATUSRESPONSE_JOBSTATUS
 _GETJOBSTATUSRESPONSE_JOBSTATUS.containing_type = _GETJOBSTATUSRESPONSE
+_GETPRINTERSTATUSRESPONSE.fields_by_name['status'].enum_type = _GETPRINTERSTATUSRESPONSE_PRINTERSTATUS
+_GETPRINTERSTATUSRESPONSE_PRINTERSTATUS.containing_type = _GETPRINTERSTATUSRESPONSE
 DESCRIPTOR.message_types_by_name['PrintMedicationResponse'] = _PRINTMEDICATIONRESPONSE
-DESCRIPTOR.message_types_by_name['CheckPrinterHealthRequest'] = _CHECKPRINTERHEALTHREQUEST
-DESCRIPTOR.message_types_by_name['CheckPrinterHealthResponse'] = _CHECKPRINTERHEALTHRESPONSE
 DESCRIPTOR.message_types_by_name['ODF'] = _ODF
 DESCRIPTOR.message_types_by_name['CreatePrintJobRequest'] = _CREATEPRINTJOBREQUEST
 DESCRIPTOR.message_types_by_name['CreatePrintjobResponse'] = _CREATEPRINTJOBRESPONSE
@@ -453,6 +448,8 @@ DESCRIPTOR.message_types_by_name['RunPrintJobRequest'] = _RUNPRINTJOBREQUEST
 DESCRIPTOR.message_types_by_name['RunPrintJobResponse'] = _RUNPRINTJOBRESPONSE
 DESCRIPTOR.message_types_by_name['GetJobStatusRequest'] = _GETJOBSTATUSREQUEST
 DESCRIPTOR.message_types_by_name['GetJobStatusResponse'] = _GETJOBSTATUSRESPONSE
+DESCRIPTOR.message_types_by_name['GetPrinterStatusRequest'] = _GETPRINTERSTATUSREQUEST
+DESCRIPTOR.message_types_by_name['GetPrinterStatusResponse'] = _GETPRINTERSTATUSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PrintMedicationResponse = _reflection.GeneratedProtocolMessageType('PrintMedicationResponse', (_message.Message,), {
@@ -461,20 +458,6 @@ PrintMedicationResponse = _reflection.GeneratedProtocolMessageType('PrintMedicat
   # @@protoc_insertion_point(class_scope:PrintMedicationResponse)
   })
 _sym_db.RegisterMessage(PrintMedicationResponse)
-
-CheckPrinterHealthRequest = _reflection.GeneratedProtocolMessageType('CheckPrinterHealthRequest', (_message.Message,), {
-  'DESCRIPTOR' : _CHECKPRINTERHEALTHREQUEST,
-  '__module__' : 'printer_pb2'
-  # @@protoc_insertion_point(class_scope:CheckPrinterHealthRequest)
-  })
-_sym_db.RegisterMessage(CheckPrinterHealthRequest)
-
-CheckPrinterHealthResponse = _reflection.GeneratedProtocolMessageType('CheckPrinterHealthResponse', (_message.Message,), {
-  'DESCRIPTOR' : _CHECKPRINTERHEALTHRESPONSE,
-  '__module__' : 'printer_pb2'
-  # @@protoc_insertion_point(class_scope:CheckPrinterHealthResponse)
-  })
-_sym_db.RegisterMessage(CheckPrinterHealthResponse)
 
 ODF = _reflection.GeneratedProtocolMessageType('ODF', (_message.Message,), {
   'DESCRIPTOR' : _ODF,
@@ -525,6 +508,20 @@ GetJobStatusResponse = _reflection.GeneratedProtocolMessageType('GetJobStatusRes
   })
 _sym_db.RegisterMessage(GetJobStatusResponse)
 
+GetPrinterStatusRequest = _reflection.GeneratedProtocolMessageType('GetPrinterStatusRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETPRINTERSTATUSREQUEST,
+  '__module__' : 'printer_pb2'
+  # @@protoc_insertion_point(class_scope:GetPrinterStatusRequest)
+  })
+_sym_db.RegisterMessage(GetPrinterStatusRequest)
+
+GetPrinterStatusResponse = _reflection.GeneratedProtocolMessageType('GetPrinterStatusResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETPRINTERSTATUSRESPONSE,
+  '__module__' : 'printer_pb2'
+  # @@protoc_insertion_point(class_scope:GetPrinterStatusResponse)
+  })
+_sym_db.RegisterMessage(GetPrinterStatusResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -534,22 +531,13 @@ _PRINTER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=770,
-  serialized_end=1045,
+  serialized_start=740,
+  serialized_end=1016,
   methods=[
-  _descriptor.MethodDescriptor(
-    name='CheckHealth',
-    full_name='Printer.CheckHealth',
-    index=0,
-    containing_service=None,
-    input_type=_CHECKPRINTERHEALTHREQUEST,
-    output_type=_CHECKPRINTERHEALTHRESPONSE,
-    serialized_options=None,
-  ),
   _descriptor.MethodDescriptor(
     name='CreatePrintJob',
     full_name='Printer.CreatePrintJob',
-    index=1,
+    index=0,
     containing_service=None,
     input_type=_CREATEPRINTJOBREQUEST,
     output_type=_CREATEPRINTJOBRESPONSE,
@@ -558,7 +546,7 @@ _PRINTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RunPrintJob',
     full_name='Printer.RunPrintJob',
-    index=2,
+    index=1,
     containing_service=None,
     input_type=_RUNPRINTJOBREQUEST,
     output_type=_RUNPRINTJOBRESPONSE,
@@ -567,10 +555,19 @@ _PRINTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetJobStatus',
     full_name='Printer.GetJobStatus',
-    index=3,
+    index=2,
     containing_service=None,
     input_type=_GETJOBSTATUSREQUEST,
     output_type=_GETJOBSTATUSRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetPrinterStatus',
+    full_name='Printer.GetPrinterStatus',
+    index=3,
+    containing_service=None,
+    input_type=_GETPRINTERSTATUSREQUEST,
+    output_type=_GETPRINTERSTATUSRESPONSE,
     serialized_options=None,
   ),
 ])
