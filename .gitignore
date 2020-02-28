@@ -2,3 +2,5 @@
 *.stl
 __pycache__
 *.pyc
+gcode/
+.vscode/
