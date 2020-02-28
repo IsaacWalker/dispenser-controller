@@ -1,5 +1,5 @@
 ############################# Download Links for Prusa Slicer and OpenSCAD for Raspberry Pi ################################
-# Prusa Slicer: https://github.com/davidk/PrusaSlicer-ARM.AppImage/releases/download/2.1.1/PrusaSlicer-2.1.1-armhf.AppImage
+# Prusa Slicer: https://github.com/davidk/PrusaSlicer-ARM.AppImage/releases/latest
 # OpenSCAD: https://files.openscad.org/snapshots/OpenSCAD-2019.01.13-armhf.AppImage 
 
 import openpyscad as op
@@ -23,18 +23,20 @@ def generate_odf_scad(unique_file_name, odf):
 
 print ("Generating SCAD")
 odf = printer_pb2.ODF(label='T. Davis',drug_name='Drug',density=0.84,length= 25, width=30,height=1.5)
-generate_odf_scad('test.scad', odf)
+os.system("mkdir tmp")
+generate_odf_scad('tmp/test.scad', odf)
 
 print ("Generating STL from SCAD")
-generate_stl = "openscad -o test.stl test.scad"
+generate_stl = "openscad -o tmp/test.stl tmp/test.scad"
 os.system(generate_stl)
 
 print ("Generating GCODE from STL")
-generate_gcode = "prusa-slicer -g test.stl --load printer_profiles/" + profile_name + " -o gcode/test.gcode"
+print ("Using Profile '" + profile_name + "'")
+generate_gcode = "prusa-slicer -g tmp/test.stl --load printer_profiles/" + profile_name + " -o gcode/test.gcode"
 os.system(generate_gcode)
 
 print ("Cleaning Up")
 if(platform.system() == "Windows"):
     os.system("del test.stl test.scad")
 else:
-    os.system("rm test.stl test.scad")
+    os.system("rm -r tmp")
