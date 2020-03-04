@@ -15,31 +15,42 @@ roi_hists = dict()
 def is_calibrated():
     return BOARD_SIZE != -1
 
+AREA_THRESH = 600.0
+
 # Find how many markers and their positions
 def calibrate(expected_number):
-    img = cv2.imread('board.png')
+    img = cv2.imread('test9-3.jpg')
     img = imutils.resize(img, width=RESIZE_WIDTH)
-
+    img_ranged = get_back_proj_hist(img)
+    img_ranged = cv2.cvtColor(img_ranged, cv2.COLOR_BGR2GRAY);
     # Convert to HSV
-    img_HSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    lower = np.array(lower_hsv, dtype="uint8")
-    upper = np.array(upper_hsv, dtype="uint8")
+   # img_HSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    #lower = np.array(lower_hsv, dtype="uint8")
+    #upper = np.array(upper_hsv, dtype="uint8")
 
     # Threshold in the a range based on the Hue
-    img_ranged = cv2.inRange(img_HSV, lower, upper)
+    #img_ranged = cv2.inRange(img_HSV, lower, upper)
+    #cv2.imshow("ranged", img_ranged)
+    #cv2.waitKey()
     contours, hierarchy = cv2.findContours(img_ranged,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
     number_of_rois = 0
 
     # Find the ROI's in the contours
     for i in range(len(contours)):
         peri = cv2.arcLength(contours[i], True)
-        board_rois[i] = cv2.boundingRect(contours[i])
-        x, y, width, height = board_rois[i]
-        roi_img = img[y:y+height, x:x+width]
-        roi_hists[i] = calculate_roi_hist(roi_img)
-        cv2.drawContours(img, contours[i], -1, (0, 0, 255), 3)
-        number_of_rois = number_of_rois + 1
-    
+        approx = cv2.approxPolyDP(contours[i], 0.4, closed=False)
+        area = cv2.contourArea(contours[i])
+        
+        if area > AREA_THRESH:
+            board_rois[i] = cv2.boundingRect(contours[i])
+            x, y, width, height = board_rois[i]
+            roi_img = img[y:y+height, x:x+width]
+            roi_hists[i] = calculate_roi_hist(roi_img)
+            cv2.drawContours(img, contours[i], -1, (0, 0, 255), 3)
+            number_of_rois = number_of_rois + 1
+
+    cv2.imshow("Conts", img)
+    cv2.waitKey()
     calibration_successful = (number_of_rois == expected_number)
     if calibration_successful:
         BOARD_SIZE = number_of_rois
@@ -49,7 +60,7 @@ def calibrate(expected_number):
 # Gets the status of the board in terms 
 def get_board_status():
     visibilities = dict()
-    img = cv2.imread('board_test.png')
+    img = cv2.imread('test9-3.jpg')
     img = imutils.resize(img, width=RESIZE_WIDTH)
     roi_imgs = subdivide_image(img)
     
@@ -81,6 +92,32 @@ def is_marker_visible(roi_img, position):
 def calculate_roi_hist(roi_img):
     return cv2.calcHist([roi_img], [0, 1, 2], None, [8, 8, 8],[0, 256, 0, 256, 0, 256])
 
-calibrated = calibrate(12)
+def get_back_proj_hist(img_rgb):
+    # Get target and bp
+    bp_img = cv2.imread("back_project_img.jpg")
+    bp_hsv = cv2.cvtColor(bp_img,cv2.COLOR_BGR2HSV)
+    img_hsv = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2HSV)
+   # cv2.imshow("bp", bp_img)
+    #cv2.imshow("img", img_hsv)
+    #cv2.waitKey()
+
+    # calculating object histogram
+    roihist = cv2.calcHist([bp_hsv],[0, 1], None, [180, 256], [0, 180, 0, 256] )
+    cv2.normalize(roihist,roihist,0,255,cv2.NORM_MINMAX)
+    dst = cv2.calcBackProject([img_hsv],[0,1],roihist,[0,180,0,256],1)
+
+    # Now convolute with circular disc
+    disc = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5))
+    cv2.filter2D(dst,-1,disc,dst)
+
+    # threshold and binary AND
+    ret,thresh = cv2.threshold(dst,15,255,0)
+    thresh = cv2.merge((thresh,thresh,thresh))
+    res = cv2.bitwise_and(img_rgb,thresh)
+    cv2.imshow("Result", res)
+    cv2.waitKey()
+    return res
+
+calibrated = calibrate(9)
 #visi = get_board_status()
 #print(visi)
