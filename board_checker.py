@@ -19,10 +19,12 @@ AREA_THRESH = 600.0
 
 # Find how many markers and their positions
 def calibrate(expected_number):
+    print("Calibrating for " + expected_number + " markers...")
     img = cv2.imread('test9-3.jpg')
     img = imutils.resize(img, width=RESIZE_WIDTH)
-    img_ranged = get_back_proj_hist(img)
-    img_ranged = cv2.cvtColor(img_ranged, cv2.COLOR_BGR2GRAY);
+    img_ranged = get_thresholded_image(img)
+    img_ranged = cv2.cvtColor(img_ranged, cv2.COLOR_BGR2GRAY)
+
     # Convert to HSV
    # img_HSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     #lower = np.array(lower_hsv, dtype="uint8")
@@ -51,9 +53,14 @@ def calibrate(expected_number):
 
     cv2.imshow("Conts", img)
     cv2.waitKey()
+
+    # Evaluates calibration success
     calibration_successful = (number_of_rois == expected_number)
     if calibration_successful:
+        print("Calibration successful.")
         BOARD_SIZE = number_of_rois
+    else:
+        print("Calibration NOT successful")
 
     return calibration_successful
 
@@ -92,7 +99,8 @@ def is_marker_visible(roi_img, position):
 def calculate_roi_hist(roi_img):
     return cv2.calcHist([roi_img], [0, 1, 2], None, [8, 8, 8],[0, 256, 0, 256, 0, 256])
 
-def get_back_proj_hist(img_rgb):
+# 
+def get_thresholded_image(img_rgb):
     # Get target and bp
     bp_img = cv2.imread("back_project_img.jpg")
     bp_hsv = cv2.cvtColor(bp_img,cv2.COLOR_BGR2HSV)
@@ -117,7 +125,7 @@ def get_back_proj_hist(img_rgb):
     cv2.imshow("Result", res)
     cv2.waitKey()
     return res
-
+    
 calibrated = calibrate(9)
 #visi = get_board_status()
 #print(visi)
